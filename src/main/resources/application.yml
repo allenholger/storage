@@ -1,0 +1,21 @@
+# 配置服务端口
+server:
+  port: 80
+
+#配置数据库连接
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/mystorage?serverTimezone=UTC
+
+  #配置flyway
+  flyway:
+    locations: classpath:db/migration
+
+#配置mybatisplus
+mybatis-plus:
+  mapper-locations: classpath:com/example/storage/mapper/xml/*.xml
+  type-aliases-package: com.example.storage.entity
+
