@@ -4,6 +4,9 @@ import com.example.storage.exception.MsgException;
 import com.example.storage.model.request.CreateAccountRequest;
 import com.example.storage.model.response.ApiResponse;
 import com.example.storage.service.AccountService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 账户的controller类
  * @author allen
  */
+@Api(value = "账户的前端控制器")
 @RestController
 @RequestMapping("account")
 public class AccountController {
@@ -26,6 +30,8 @@ public class AccountController {
      * @param request
      * @return
      */
+    @ApiOperation(value = "创建账户", notes = "根据Account实体来创建账户")
+    @ApiImplicitParam(name = "request", value = "创建账户的请求", required = true, dataType = "CreateAccountRequest")
     @PostMapping("/create")
     public ApiResponse createAccount(@RequestBody CreateAccountRequest request) throws MsgException {
         if(request == null){
