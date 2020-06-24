@@ -1,12 +1,9 @@
 package com.example.storage.config;
 
 import com.google.common.collect.Sets;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -30,7 +27,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 ////设定Api文档头信息，这个信息会展示在文档UI的头部位置
                 .apiInfo(customApiInfo())
-                .host("localhost")
+                .host("localhost:8080")
                 .protocols(Sets.newHashSet("http", "https"))
                 .select()
                 //只生成被Api这个注解注解过的类接口

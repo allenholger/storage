@@ -1,6 +1,6 @@
 # 配置服务端口
 server:
-  port: 80
+  port: 8080
 
 #配置数据库连接
 spring:
@@ -8,14 +8,27 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
-    url: jdbc:mysql://localhost:3306/mystorage?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/mystorage?serverTimezone=GMT%2B8&characterEncoding=utf-8&useUnicode=true
 
   #配置flyway
   flyway:
     locations: classpath:db/migration
+  #配置应用的名字
+  application:
+    name: storage-api
 
 #配置mybatisplus
 mybatis-plus:
   mapper-locations: classpath:com/example/storage/mapper/xml/*.xml
   type-aliases-package: com.example.storage.entity
 
+#配置日志水平
+logging:
+  level:
+    spring:
+      springframework:
+        web: debug
+    com:
+      example:
+        storage: debug
+  config: classpath:log4j2.xml

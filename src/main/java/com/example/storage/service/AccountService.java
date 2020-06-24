@@ -17,4 +17,11 @@ public interface AccountService extends IService<Account> {
      * @param request
      */
     void createAccount(CreateAccountRequest request) throws MsgException;
+
+    /**
+     * 根据账户名查询
+     * @param accountName
+     * @return
+     */
+    Account findByAccountName(String accountName);
 }
