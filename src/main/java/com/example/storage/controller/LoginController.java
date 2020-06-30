@@ -54,23 +54,20 @@ public class LoginController {
             if (application == null) {
                 throw new MsgException("无效的应用名: " + appCode);
             }
-//            return String.format("redirect:%s/oauth/token?grant_type=%s&username=%s&password=%s&client_id=%s&client_secret=%s", application.getApplicationUrl(),
-//                    "password",loginRequest.getAccountName(), loginRequest.getAccountPassword(), application.getClientId(), application.getAppSecret());
+            //return String.format("redirect:%s/oauth/token?grant_type=%s&username=%s&password=%s&client_id=%s&client_secret=%s", application.getApplicationUrl(),
+            //        "password",loginRequest.getAccountName(), loginRequest.getAccountPassword(), application.getClientId(), application.getAppSecret());
             String url = String.format("%s/oauth/token", application.getApplicationUrl());
-            //设置请求头
             HttpHeaders headers = new HttpHeaders();
-            headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE);
-            //设置请求体
-            MultiValueMap<String, String> param = new LinkedMultiValueMap<>();
+            headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+            MultiValueMap<String, String> param = new LinkedMultiValueMap();
+            param.add("grant_type", "password");
             param.add("username", loginRequest.getAccountName());
             param.add("password", loginRequest.getAccountPassword());
-            param.add("grant_type", "password");
             param.add("client_id", application.getClientId());
             param.add("client_secret", application.getAppSecret());
             HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(headers, param);
-            ResponseEntity response = restTemplate.postForEntity(url, entity, JSONObject.class);
-            log.info(response.getBody().toString());
-            return "null";
+            ResponseEntity<JSONObject> response = restTemplate.exchange(url, HttpMethod.POST, entity, JSONObject.class);
+            return null;
         }else if (loginRequest.getLoginType().equalsIgnoreCase(LoginType.SMS_CODE)){
             Application application = applicationService.getOne(new QueryWrapper<Application>().eq("application_code", appCode).eq("validation", DataValidation.YES));
             if(application == null){

@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
-  *应用的
+  *应用的初始化枚举类
   *@author: Allen Holger
  * @date: 2020/6/12 17:11
   */

@@ -34,12 +34,12 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         log.info("配置URL的访问权限");
         http.csrf().disable()
-                .formLogin().loginPage("/authentication/form").successHandler(customLoginSuccessHandler).failureHandler(customLoginFailureHandler)
+                .formLogin().loginProcessingUrl("/login").successHandler(customLoginSuccessHandler).failureHandler(customLoginFailureHandler).permitAll()
                 .and().exceptionHandling().authenticationEntryPoint(customAuthenticationEntryPoint)
-                .and().logout().logoutUrl("/logout").logoutSuccessHandler(customLogoutSuccessHandler)
-                .and().requestMatchers().antMatchers("/verificationCode/**")
+                .and().logout().logoutUrl("/logout").logoutSuccessHandler(customLogoutSuccessHandler).permitAll()
+                .and().authorizeRequests().antMatchers("/oauth/**").permitAll()
                 .and().authorizeRequests().antMatchers("/security/**").authenticated()
-                .and().httpBasic();
+                .and().httpBasic().disable();
     }
 
 }

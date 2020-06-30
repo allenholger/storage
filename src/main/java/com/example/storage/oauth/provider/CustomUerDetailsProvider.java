@@ -12,29 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomUerDetailsProvider extends AbstractUserDetailsAuthenticationProvider {
 
-    /**
-     * 校验密码正确性
-     * @param userDetails
-     * @param usernamePasswordAuthenticationToken
-     * @throws AuthenticationException
-     */
     @Override
-    protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken) throws AuthenticationException {
-        if(usernamePasswordAuthenticationToken.getCredentials() == null){
-
-        }
+    protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
 
     }
 
-    /**
-     * 获取用户详情
-     * @param s
-     * @param usernamePasswordAuthenticationToken
-     * @return
-     * @throws AuthenticationException
-     */
     @Override
-    protected UserDetails retrieveUser(String s, UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken) throws AuthenticationException {
+    protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
         return null;
     }
 }

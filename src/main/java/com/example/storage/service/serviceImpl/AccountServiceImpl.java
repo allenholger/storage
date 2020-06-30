@@ -49,7 +49,7 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
      */
     @Override
     public Account findByAccountName(String accountName) {
-        Account account = accountMapper.selectOne(new QueryWrapper<Account>().eq("account_name", accountName).eq("state", DataValidation.YES));
+        Account account = accountMapper.selectOne(new QueryWrapper<Account>().eq("account_name", accountName).eq("validation", DataValidation.YES));
         return account;
     }
 }

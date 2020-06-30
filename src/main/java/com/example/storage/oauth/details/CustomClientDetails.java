@@ -86,4 +86,20 @@ public class CustomClientDetails implements ClientDetails {
     public Map<String, Object> getAdditionalInformation() {
         return null;
     }
+
+    public CustomClientDetails(String clientId,
+                               Set<String> resourceIds,
+                               boolean secretRequired,
+                               String clientSecret,
+                               boolean scoped,
+                               Set<String> scope,
+                               Set<String> authorizedGrantTypes) {
+        this.clientId = clientId;
+        this.resourceIds = resourceIds;
+        this.secretRequired = secretRequired;
+        this.clientSecret = clientSecret;
+        this.scoped = scoped;
+        this.scope = scope;
+        this.authorizedGrantTypes = authorizedGrantTypes;
+    }
 }
