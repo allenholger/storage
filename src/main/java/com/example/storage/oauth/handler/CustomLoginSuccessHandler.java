@@ -1,8 +1,8 @@
 package com.example.storage.oauth.handler;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
@@ -16,12 +16,12 @@ import java.io.IOException;
   *@author: Allen Holger
   *@since: 2020/6/1
   */
-@Component
-@Slf4j
-public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
-    @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
-        super.onAuthenticationSuccess(request, response, authentication);
-
-    }
-}
+//@Component
+//@Slf4j
+//public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
+//    @Override
+//    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
+//        super.onAuthenticationSuccess(request, response, authentication);
+//
+//    }
+//}

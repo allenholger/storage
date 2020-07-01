@@ -78,6 +78,7 @@
       <version>2.2.6.RELEASE</version>
     </dependency>
 
+    <!--  springboot oauth2 依赖  -->
     <!-- https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2 -->
     <dependency>
       <groupId>org.springframework.security.oauth</groupId>
@@ -85,7 +86,6 @@
       <version>2.2.6.RELEASE</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
@@ -136,6 +136,22 @@
       <version>3.3.1</version>
     </dependency>
 
+    <!--  配置数据库连接池druid  -->
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/com.alibaba/druid &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>com.alibaba</groupId>-->
+<!--      <artifactId>druid</artifactId>-->
+<!--      <version>1.1.23</version>-->
+<!--    </dependency>-->
+    <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid-spring-boot-starter</artifactId>
+      <version>1.1.23</version>
+    </dependency>
+
+
+    <!--  配置mybatis依赖  -->
     <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-generator -->
     <dependency>
       <groupId>com.baomidou</groupId>
@@ -197,6 +213,12 @@
         <directory>src/main/java</directory>
         <includes>
           <include>**/*.xml</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+        <include>**/*.*</include>
         </includes>
       </resource>
     </resources>

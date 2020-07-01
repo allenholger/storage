@@ -2,20 +2,48 @@
 server:
   port: 8080
 
-#配置数据库连接
 spring:
+  #配置应用的名字
+  application:
+    name: storage-api
+  #配置数据库连接
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
     url: jdbc:mysql://localhost:3306/mystorage?serverTimezone=GMT%2B8&characterEncoding=utf-8&useUnicode=true
 
+    #配置druid数据库连接池
+    druid:
+      #1.初始化大小，最大，最小
+      initialSize: 10
+      maxActive: 50
+      minIdle: 10
+      #2.获取连接时最大等待时间
+      maxWait: 60000
+      #3.配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      #4. 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      #5.检测连接是否有效的sql
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      #6.申请连接时执行validationQuery检测连接是否有效
+      testOnBorrow: false
+      #7.归还连接时执行validationQuery检测连接是否有效
+      testOnReturn: false
+      #8.是否缓存preparedStatements
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      #配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入
+      filters: stat,wall,log4j
+      #通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
   #配置flyway
   flyway:
+    enabled: true
     locations: classpath:db/migration
-  #配置应用的名字
-  application:
-    name: storage-api
 
 #配置mybatisplus
 mybatis-plus:
